@@ -4,7 +4,26 @@
   "description": "hello world lmao",
   "main": "index.js",
   "dependencies": {
-    "discord.js": "^12.5.1"
+    "@discordjs/opus": "^0.3.3",
+    "cheerio": "^1.0.0-rc.3",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "discord.js": "^12.5.1",
+    "express": "^4.17.1",
+    "ffmpeg": "0.0.4",
+    "ffmpeg-static": "^4.2.7",
+    "fortnite-api-com": "^2.2.0",
+    "https": "^1.0.0",
+    "mathjs": "^8.1.0",
+    "minecraft-server-util": "^3.1.0",
+    "ms": "^2.1.2",
+    "querystring": "^0.2.0",
+    "request": "^2.88.2",
+    "triviadb": "^0.2.0",
+    "url-encode-decode": "^1.0.0",
+    "wikipedia": "^1.0.1",
+    "yt-search": "^2.5.1",
+    "ytdl-core": "^4.4.1"
   },
   "devDependencies": {},
   "scripts": {

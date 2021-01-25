@@ -9,7 +9,7 @@ client.on('message', message => {
     if (message.author.bot) return
     if (!message.content.startsWith('!')) return
     if (!message.guild) return message.reply('Please use this bot in a guild!')
-    message.reply('Hefhbweiguewohv')
+    
 })
 
-client.login('')
+client.login('ODAzMTcxMTUyMDgzMDI1OTQx.YA55bA.2GTqGyLF4VFLkBjAFqntHikNF1w')
