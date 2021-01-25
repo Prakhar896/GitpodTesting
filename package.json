@@ -1,0 +1,23 @@
+{
+  "name": "gitpodtesting",
+  "version": "1.0.0",
+  "description": "hello world lmao",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prakhar896/GitpodTesting.git"
+  },
+  "author": "Prakhar Trivedi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Prakhar896/GitpodTesting/issues"
+  },
+  "homepage": "https://github.com/Prakhar896/GitpodTesting#readme"
+}
