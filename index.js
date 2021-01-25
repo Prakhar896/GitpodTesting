@@ -1,11 +1,13 @@
-const message = "Hello World!"
+const Discord = require('discord.js')
+const client = new Discord.Client()
 
-function hello() {
-    var index = 0
-    while (index <= 10) {
-        console.log(message)
-        index += 1
-    }
-}
+client.on('ready', () => {
+    console.log('helllo world i am online lmfao')
+})
 
-hello()
+client.on('message', message => {
+    if (!message.content.startsWith('!')) return msg.reply('ah thats not a bot command...bye')
+    msg.reply('Hefhbweiguewohv')
+})
+
+client.login('')
