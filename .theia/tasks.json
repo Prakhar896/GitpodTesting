@@ -1,0 +1,9 @@
+{
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "install",
+            "problemMatcher": []
+        }
+    ]
+}

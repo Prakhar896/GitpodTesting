@@ -6,8 +6,10 @@ client.on('ready', () => {
 })
 
 client.on('message', message => {
-    if (!message.content.startsWith('!')) return msg.reply('ah thats not a bot command...bye')
-    msg.reply('Hefhbweiguewohv')
+    if (message.author.bot) return
+    if (!message.content.startsWith('!')) return
+    if (!message.guild) return message.reply('Please use this bot in a guild!')
+    message.reply('Hefhbweiguewohv')
 })
 
-client.login('')
+client.login('ODAzMTcxMTUyMDgzMDI1OTQx.YA55bA.EOcoUBvrHPA_xJvqkiUh2aPwr3w')
