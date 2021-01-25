@@ -12,4 +12,4 @@ client.on('message', message => {
     message.reply('Hefhbweiguewohv')
 })
 
-client.login('ODAzMTcxMTUyMDgzMDI1OTQx.YA55bA.EOcoUBvrHPA_xJvqkiUh2aPwr3w')
+client.login('')
