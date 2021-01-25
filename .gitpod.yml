@@ -11,3 +11,4 @@ tasks:
   - init: echo 'init script' # runs during prebuild
     command: echo 'start script'
   - init: node .
+    command: node index.js
