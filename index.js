@@ -1,5 +1,4 @@
 const Discord = require('discord.js')
-const { arg } = require('mathjs')
 const client = new Discord.Client()
 const Prefix = '!'
 client.on('ready', () => {
@@ -15,7 +14,7 @@ client.on('message', message => {
     let args = message.content.substring(Prefix.length).split(' ');
     if (args[0] == "ping") {
         message.reply('pong!')
-    } else if (args[0] == "kanye") {
+    } else if (args[0] == "kanye" || args[0] == 'k') {
         message.reply('Here\'s a pic of Kanye! :)')
         message.channel.send('https://upload.wikimedia.org/wikipedia/commons/0/0f/Kanye_West_at_the_2009_Tribeca_Film_Festival-2_%28cropped%29.jpg')
     } else if (args[0] == "hi") {
