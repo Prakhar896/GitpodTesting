@@ -1,11 +1,31 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
+const cron = require('cron')
 const Prefix = '!'
 client.on('ready', () => {
     console.log('helllo world i am online lmfao')
 })
 require('dotenv').config()
 const hwList = ["hello: prakhar"]
+let magaServerID = '780685961079685120'
+let hwChannelID = '800333000671232041'
+
+let hwListJob = new cron.CronJob('00 00 17 * * *', () => {
+    const hwEmbed = new Discord.MessageEmbed()
+        .setTitle('List of Homework items');
+
+    for (hwItem of hwList) {
+        var indexOfColon = hwItem.indexOf(":")
+        var subtitleOfHw = hwItem.substring(indexOfColon + 1)
+        var title = hwItem.substring(0, indexOfColon)
+        console.log(title)
+        hwEmbed.addField(title, subtitleOfHw);
+    }
+
+    client.guilds.cache.get(magaServerID).channels.cache.get(hwChannelID).send(hwEmbed)
+})
+
+hwListJob.start()
 
 client.on('message', message => {
     if (message.author.bot) return
