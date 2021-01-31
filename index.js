@@ -6,7 +6,7 @@ client.on('ready', () => {
     console.log('helllo world i am online lmfao')
 })
 require('dotenv').config()
-const hwList = ["hello: prakhar"]
+const hwList = []
 let magaServerID = '780685961079685120'
 let hwChannelID = '800333000671232041'
 
@@ -48,13 +48,17 @@ client.on('message', message => {
                 var indexOfColon = hwItem.indexOf(":")
                 var subtitleOfHw = hwItem.substring(indexOfColon + 1)
                 var title = hwItem.substring(0, indexOfColon)
-                console.log(title)
-                hwEmbed.addField(title, subtitleOfHw);
+                if (!title || !subtitleOfHw) {
+                    hwEmbed.addField('Fatal Error:', 'Could not find title or description of homework item. Please delete this item and try again.')
+                } else {
+                    hwEmbed.addField(title, subtitleOfHw)
+                }
             }
             message.channel.send(hwEmbed)
         } else if (args[1] == "add") {
-            let newItem = message.content.slice(Prefix.length - 1 + 7)
+            let newItem = message.content.slice(Prefix.length - 1 + 8)
             if (!newItem) return message.reply('Please give the new homework item in the correct format. Type !hw help for more information')
+            if (!(newItem.indexOf(':') > -1)) return message.reply('Please use the correct format to add a homework entry.')
             hwList.push(newItem)
             message.reply('Added new item successfully!')
         } else if (args[1] == "help") {
