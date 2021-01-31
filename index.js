@@ -36,4 +36,4 @@ client.on('message', message => {
     }
 })
 
-client.login('token here')
+client.login(process.env.DISCORD_TOKEN)
