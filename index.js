@@ -61,6 +61,22 @@ client.on('message', message => {
             if (!(newItem.indexOf(':') > -1)) return message.reply('Please use the correct format to add a homework entry.')
             hwList.push(newItem)
             message.reply('Added new item successfully!')
+            message.channel.send('Showing homework list with new changes...')
+
+            const hwEmbed = new Discord.MessageEmbed()
+                .setTitle('List of Homework items');
+            for (hwItem of hwList) {
+                var indexOfColon = hwItem.indexOf(":")
+                var subtitleOfHw = hwItem.substring(indexOfColon + 1)
+                var title = hwItem.substring(0, indexOfColon)
+                if (!title || !subtitleOfHw) {
+                    hwEmbed.addField('Fatal Error:', 'Could not find title or description of homework item. Please delete this item and try again.')
+                } else {
+                    hwEmbed.addField(title, subtitleOfHw)
+                }
+            }
+            message.channel.send(hwEmbed)
+
         } else if (args[1] == "help") {
             let hwHelpEmbed = new Discord.MessageEmbed()
                 .setTitle('Homework List Command Help')
@@ -69,7 +85,8 @@ client.on('message', message => {
                 .addField('Adding a homework item command format:', '!hw add <title>:<details or description>')
                 .addField('Example of homework adding command:', '!hw add Emaths:TB Page 31, Practise Now 3')
                 .addField('Deleting a homework item command format: ', '!hw delete <count of item>')
-                .addField('The homework list counting starts with 1 being the first item in the list', 'Example if I wanted to delete second item in list: !hw delete 2');
+                .addField('The homework list counting starts with 1 being the first item in the list', 'Example if I wanted to delete second item in list: !hw delete 2')
+                .addField('Deleting all Homework Items', 'If you want to delete the entire list, type !hw wipe')
             message.channel.send(hwHelpEmbed)
         } else if (args[1] == 'delete') {
             let countOfItemToBeDeleted = args[2]
@@ -82,6 +99,25 @@ client.on('message', message => {
                 return
             }
             message.reply('Deleted homework item successfully!')
+            message.channel.send('Showing homework list with new changes...')
+
+            const hwEmbed = new Discord.MessageEmbed()
+                .setTitle('List of Homework items');
+            for (hwItem of hwList) {
+                var indexOfColon = hwItem.indexOf(":")
+                var subtitleOfHw = hwItem.substring(indexOfColon + 1)
+                var title = hwItem.substring(0, indexOfColon)
+                if (!title || !subtitleOfHw) {
+                    hwEmbed.addField('Fatal Error:', 'Could not find title or description of homework item. Please delete this item and try again.')
+                } else {
+                    hwEmbed.addField(title, subtitleOfHw)
+                }
+            }
+            message.channel.send(hwEmbed)
+            
+        } else if (args[1] == 'wipe') {
+            hwList = []
+            message.channel.send('Wiped the Homework List successfully!')
         }
     }
 })
