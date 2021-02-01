@@ -122,4 +122,8 @@ client.on('message', message => {
     }
 })
 
+client.on('messageDelete', deletedMessage => {
+    client.guilds.cache.get('805723501544603658').channels.cache.get('805733098297360406').send(`${deletedMessage.author.tag} deleted a message with the content \`${deletedMessage.content}\` in the server ${deletedMessage.guild.name}.`)
+})
+
 client.login(process.env.DISCORD_TOKEN)
