@@ -9,6 +9,8 @@ require('dotenv').config()
 const hwList = []
 let magaServerID = '780685961079685120'
 let hwChannelID = '800333000671232041'
+let classServerID = '807599800379768862'
+let classServerHwChannelID = '807601775753429002'
 
 let hwListJob = new cron.CronJob('00 00 17 * * *', () => {
     const hwEmbed = new Discord.MessageEmbed()
@@ -23,6 +25,7 @@ let hwListJob = new cron.CronJob('00 00 17 * * *', () => {
     }
 
     client.guilds.cache.get(magaServerID).channels.cache.get(hwChannelID).send(hwEmbed)
+    client.guilds.cache.get(classServerID).channels.cache.get(classServerHwChannelID).send(hwEmbed)
 })
 
 hwListJob.start()
