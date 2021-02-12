@@ -6,7 +6,7 @@ client.on('ready', () => {
     console.log('helllo world i am online lmfao')
 })
 require('dotenv').config()
-const hwList = []
+var hwList = []
 let magaServerID = '780685961079685120'
 let hwChannelID = '800333000671232041'
 let classServerID = '807599800379768862'
@@ -121,6 +121,22 @@ client.on('message', message => {
         } else if (args[1] == 'wipe') {
             hwList = []
             message.channel.send('Wiped the Homework List successfully!')
+            message.channel.send('Showing homework list with new changes...')
+
+            const hwEmbed = new Discord.MessageEmbed()
+                .setTitle('List of Homework items');
+            for (hwItem of hwList) {
+                var indexOfColon = hwItem.indexOf(":")
+                var subtitleOfHw = hwItem.substring(indexOfColon + 1)
+                var title = hwItem.substring(0, indexOfColon)
+                if (!title || !subtitleOfHw) {
+                    hwEmbed.addField('Fatal Error:', 'Could not find title or description of homework item. Please delete this item and try again.')
+                } else {
+                    hwEmbed.addField(title, subtitleOfHw)
+                }
+            }
+            message.channel.send(hwEmbed)
+            
         }
     }
 })
