@@ -58,7 +58,7 @@ async function addItem(subject, content) {
 function removeItem(index) {
     database.ref("items/" + (index)).remove()
 }
-
+ 
 // Realtime Listeners
 // Data Change
 var itemsRef = database.ref("items/");
