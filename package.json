@@ -14,7 +14,7 @@
     "express": "^4.17.1",
     "ffmpeg": "0.0.4",
     "ffmpeg-static": "^4.2.7",
-    "firebase": "^8.2.9",
+    "firebase": "^8.2.5",
     "fortnite-api-com": "^2.2.0",
     "https": "^1.0.0",
     "mathjs": "^8.1.0",
