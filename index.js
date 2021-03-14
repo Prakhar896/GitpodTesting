@@ -2,6 +2,13 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const cron = require('cron')
 const Prefix = '!'
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => res.send('Hello World!'));
+
+app.listen(port, () => console.log(`School Bot listening at http://localhost:${port}`));
 client.on('ready', () => {
   console.log('helllo world i am online lmfao')
 })
@@ -145,4 +152,4 @@ client.on('messageDelete', deletedMessage => {
   client.guilds.cache.get('805723501544603658').channels.cache.get('805733098297360406').send(`${deletedMessage.author.tag} deleted a message with the content \`${deletedMessage.content}\` in the server ${deletedMessage.guild.name}.`)
 })
 
-client.login('token')
+client.login('ODAzMTcxMTUyMDgzMDI1OTQx.YA55bA.ph7fwizKwBVTa4hnbl1aBLi1jNQ')
