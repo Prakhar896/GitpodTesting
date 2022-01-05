@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const cron = require('cron')
-const Prefix = '!'
+const Prefix = 's!'
 const express = require('express');
 const app = express();
 const port = 4000;
@@ -39,8 +39,10 @@ hwListJob.start()
 
 client.on('message', message => {
   if (message.author.bot) return
-  if (!message.content.startsWith("s!")) return
+  if (!message.content.startsWith(Prefix)) return
   if (!message.guild) return message.reply('Please use this bot in a guild!')
+  let args = message.content.substring(Prefix.length).split(' ');
+  console.log(args)
   if (args[0] == "ping") {
     message.reply('pong!')
   } else if (args[0] == "kanye" || args[0] == 'k') {
@@ -142,8 +144,9 @@ client.on('message', message => {
         }
       }
       message.channel.send(hwEmbed)
-
     }
+  } else if (args[0] == "version") {
+    message.reply("School bot is running Version 1.0 with local storage of homework!")
   }
 })
 
