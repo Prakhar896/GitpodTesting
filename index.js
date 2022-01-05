@@ -1,10 +1,10 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const cron = require('cron')
-const Prefix = '!'
+const Prefix = 's!'
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 4000;
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
@@ -31,8 +31,8 @@ let hwListJob = new cron.CronJob('00 00 17 * * *', () => {
     hwEmbed.addField(title, subtitleOfHw);
   }
 
-  client.guilds.cache.get(magaServerID).channels.cache.get(hwChannelID).send(hwEmbed)
-  client.guilds.cache.get(classServerID).channels.cache.get(classServerHwChannelID).send(hwEmbed)
+  // client.guilds.cache.get(magaServerID).channels.cache.get(hwChannelID).send(hwEmbed)
+  // client.guilds.cache.get(classServerID).channels.cache.get(classServerHwChannelID).send(hwEmbed)
 })
 
 hwListJob.start()
@@ -42,6 +42,7 @@ client.on('message', message => {
   if (!message.content.startsWith(Prefix)) return
   if (!message.guild) return message.reply('Please use this bot in a guild!')
   let args = message.content.substring(Prefix.length).split(' ');
+  console.log(args)
   if (args[0] == "ping") {
     message.reply('pong!')
   } else if (args[0] == "kanye" || args[0] == 'k') {
@@ -143,8 +144,9 @@ client.on('message', message => {
         }
       }
       message.channel.send(hwEmbed)
-
     }
+  } else if (args[0] == "version") {
+    message.reply("School bot is running Version 1.0 with local storage of homework!")
   }
 })
 
@@ -152,4 +154,4 @@ client.on('messageDelete', deletedMessage => {
   client.guilds.cache.get('805723501544603658').channels.cache.get('805733098297360406').send(`${deletedMessage.author.tag} deleted a message with the content \`${deletedMessage.content}\` in the server ${deletedMessage.guild.name}.`)
 })
 
-client.login('ODAzMTcxMTUyMDgzMDI1OTQx.YA55bA.ph7fwizKwBVTa4hnbl1aBLi1jNQ')
+client.login(process.env.DISCORD_TOKEN)
